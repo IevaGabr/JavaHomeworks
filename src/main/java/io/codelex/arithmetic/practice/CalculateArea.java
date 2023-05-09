@@ -61,7 +61,7 @@ public class CalculateArea {
         Scanner keyboard = new Scanner(System.in);
         System.out.print("What is the circle's radius? ");
         //todo
-        //radius = keyboard.nextDouble();
+        radius = keyboard.nextBigDecimal();
 
         // Display output
         System.out.println("The circle's area is "
@@ -78,12 +78,12 @@ public class CalculateArea {
         // Get length
         System.out.print("Enter length? ");
         //todo
-        //length = keyboard.nextDouble();
+        length = keyboard.nextBigDecimal();
 
         // Get width
         System.out.print("Enter width? ");
         //todo
-        //width = keyboard.nextDouble();
+        width = keyboard.nextBigDecimal();
 
         // Display output
         System.out.println("The rectangle's area is "
@@ -100,12 +100,12 @@ public class CalculateArea {
         // Get the base
         System.out.print("Enter length of the triangle's base? ");
         //todo
-        //base = keyboard.nextDouble();
+        base = keyboard.nextBigDecimal();
 
         // Get the height
         System.out.print("Enter triangle's height? ");
         //todo
-        //height = keyboard.nextDouble();
+        height = keyboard.nextBigDecimal();
 
         // Display the triangle's area.
         System.out.println("The triangle's area is "
