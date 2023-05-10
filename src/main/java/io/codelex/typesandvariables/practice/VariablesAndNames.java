@@ -17,6 +17,6 @@ public class VariablesAndNames {
         System.out.println("There will be " + carsNotDriven + " empty cars today.");
         System.out.println("We can transport " + carpoolCapacity + " people today.");
         System.out.println("We have " + passengers + " to carpool today.");
-        System.out.println("We need to put about " + String.format("%.2f",averagePassengersPerCar) + " in each car.");
+        System.out.println("We need to put about " + String.format("%.2f", averagePassengersPerCar) + " in each car.");
     }
 }

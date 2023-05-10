@@ -6,8 +6,8 @@ public class CozaLozaWoza {
     public static void main(String[] args) {
         int startNumber = 1;
         int endNumber = 110;
-        for (int i = startNumber; i <= endNumber ; i++) {
-            if (i % 7 == 0 && i % 5 == 0 && i % 3 == 0){
+        for (int i = startNumber; i <= endNumber; i++) {
+            if (i % 7 == 0 && i % 5 == 0 && i % 3 == 0) {
                 System.out.print("CozaLozaWoza ");
             } else if (i % 7 == 0 && i % 5 == 0) {
                 System.out.print("LozaWoza ");
@@ -24,7 +24,7 @@ public class CozaLozaWoza {
             } else {
                 System.out.print(i + " ");
             }
-            if (i % 11 == 0){
+            if (i % 11 == 0) {
                 System.out.println();
             }
         }

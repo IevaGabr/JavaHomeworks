@@ -11,7 +11,7 @@ public class Exercise6 {
             System.out.println("Enter single digit number:");
             num = input.nextInt();
             sum = sum + num;
-        } while (num >=0 && num <10);
+        } while (num >= 0 && num < 10);
         System.out.println("Entered single digit number sum is " + sum);
 
 
