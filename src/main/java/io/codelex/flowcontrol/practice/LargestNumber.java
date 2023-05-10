@@ -1,5 +1,6 @@
 package io.codelex.flowcontrol.practice;
 
+import javax.sound.midi.Soundbank;
 import java.util.Scanner;
 
 public class LargestNumber {
@@ -23,6 +24,22 @@ public class LargestNumber {
         Input the 2nd number: 78
         Input the 3rd number: 87
          */
+
+        int largestNumber = 0;
+
+        if (num1 > num2 && num1 > num3) {
+            largestNumber = num1;
+        }
+
+        if (num2 > num1 && num2 > num3) {
+            largestNumber = num2;
+        }
+
+        if (num3 > num1 && num3 > num2) {
+            largestNumber = num3;
+        }
+
+        System.out.println("Largest of numbers: " + num1 + ", " + num2 + " and " + num3 + " is " + largestNumber + ".");
     }
 
 }
