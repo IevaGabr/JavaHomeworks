@@ -13,8 +13,8 @@ public class Exercise5 {
         System.out.println("+" + String.format("%1$62s", "+").replace(" ", "-"));
 
         for (int i = 0; i < courses.length; i++) {
-            System.out.println("| " + (i+1) + " |" + String.format("%1$" + coursesColumnWidth + "s",courses[i]) + " | "
-                    + String.format("%1$" + teachersColumnWidth + "s",teachers[i]) + " |");
+            System.out.println("| " + (i + 1) + " |" + String.format("%1$" + coursesColumnWidth + "s", courses[i]) + " | "
+                    + String.format("%1$" + teachersColumnWidth + "s", teachers[i]) + " |");
         }
 
         System.out.println("+" + String.format("%1$62s", "+").replace(" ", "-"));

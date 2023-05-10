@@ -13,13 +13,13 @@ public class Exercise8 {
         calculateSalary(employee3BasePay, employee3WorkedHours);
     }
 
-    public static void calculateSalary (double basePay, int hoursWorked) {
+    public static void calculateSalary(double basePay, int hoursWorked) {
         if (basePay < 8) {
             System.out.println("The base pay must not be less than the minimum wage ($8.00 an hour).");
         } else if (hoursWorked > 60) {
             System.out.println("Worked hours cannot be more than 60.");
         } else {
-            if (hoursWorked <= 40){
+            if (hoursWorked <= 40) {
                 double salary = basePay * hoursWorked;
                 System.out.println("Total pay: $" + String.format("%.2f", salary).replace(",", "."));
             } else {

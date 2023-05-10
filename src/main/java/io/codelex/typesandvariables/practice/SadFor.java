@@ -9,7 +9,7 @@ public class SadFor {
 
     public static int test1() {
 //fixme
-      int result = 0;
+        int result = 0;
         for (int i = 0; i < 10; i++) {
             result = i;
             if (Math.sqrt(i) > 2.5)

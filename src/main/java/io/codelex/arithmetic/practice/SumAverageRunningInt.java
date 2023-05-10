@@ -11,7 +11,7 @@ public class SumAverageRunningInt {
             sum += number;
         }
 
-        average = (double) sum / (upperBound-lowerBound + 1);
+        average = (double) sum / (upperBound - lowerBound + 1);
 
         System.out.println("The sum of " + lowerBound + " to " + upperBound + " is " + sum);
         System.out.println("The average is " + average);
