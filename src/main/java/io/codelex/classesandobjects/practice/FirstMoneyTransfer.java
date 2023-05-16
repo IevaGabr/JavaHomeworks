@@ -1,0 +1,12 @@
+package io.codelex.classesandobjects.practice;
+
+public class FirstMoneyTransfer {
+    public static void main(String[] args) {
+        Account mattsAccount = new Account("Matt's account", 1000);
+        Account myAccount = new Account("my account", 0);
+        mattsAccount.withdrawal(100.0);
+        myAccount.deposit(100.0);
+        System.out.println(mattsAccount);
+        System.out.println(myAccount);
+    }
+}
