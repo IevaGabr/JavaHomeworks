@@ -4,9 +4,12 @@ import java.util.Scanner;
 
 public class VideoStoreTest {
     private static final int COUNT_OF_MOVIES = 3;
+    private static Videostore videostore = new Videostore();
+
 
     public static void main(String[] args) {
         final Scanner keyboard = new Scanner(System.in);
+        keyboard.useDelimiter("\n");
 
         while (true) {
             System.out.println("Choose the operation you want to perform ");
@@ -32,8 +35,10 @@ public class VideoStoreTest {
                 default:
                     break;
             }
+            System.out.println(videostore);
 
         }
+
     }
 
     private static void fillVideoStore(Scanner scanner) {
@@ -43,14 +48,25 @@ public class VideoStoreTest {
             System.out.println("Enter rating");
             int rating = scanner.nextInt();
             //todo - add video
+            videostore.addVideo(movieName);
+            videostore.takeRating(movieName, rating);
         }
     }
 
     private static void rentVideo(Scanner scanner) {
         //todo - rent video
+        System.out.println("Enter movie to rent");
+        String movieName = scanner.next();
+        System.out.println(videostore.checkoutVideo(movieName));
     }
 
     private static void returnVideo(Scanner scanner) {
         //todo - return video
+        System.out.println("Enter movie to return");
+        String movieName = scanner.next();
+        videostore.returnVideo(movieName);
+        System.out.println("Enter rating");
+        int rating = scanner.nextInt();
+        videostore.takeRating(movieName, rating);
     }
 }
