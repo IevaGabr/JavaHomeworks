@@ -4,7 +4,8 @@ public class Video {
     private String title;
     private boolean availability;
 
-    private double rating;
+    int ratingSum;
+    int ratingCount;
 
     public String getTitle() {
         return title;
@@ -23,15 +24,20 @@ public class Video {
     }
 
     public double getRating() {
-        return rating;
+        return ratingSum;
     }
 
-    public void setRating(double rating) {
-        this.rating = rating;
+    public void setRating(int rating) {
+        this.ratingSum += rating;
+        this.ratingCount++;
+    }
+
+    public double getAverageRating() {
+        return (double) this.ratingSum / this.ratingCount;
     }
 
     @Override
     public String toString() {
-        return "Title: " + title + "\t availability: " + availability + "\t rating: " + rating + "\n";
+        return "Title: " + title + "\t availability: " + availability + "\t rating: " + String.format("%.2f", getAverageRating()) + "\n";
     }
 }
