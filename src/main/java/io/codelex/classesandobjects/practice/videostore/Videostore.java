@@ -35,16 +35,10 @@ public class Videostore {
         }
     }
 
-    public void takeRating(String title, double rating) {
+    public void takeRating(String title, int rating) {
         for (int i = 0; i < videostore.size(); i++) {
             if (videostore.get(i).getTitle().equals(title)) {
-                if (videostore.get(i).getRating() != 0) {
-                    videostore.get(i).setRating((videostore.get(i).getRating() + rating) / 2);
-                    break;
-                } else {
-                    videostore.get(i).setRating(rating);
-                    break;
-                }
+                videostore.get(i).setRating(rating);
             }
         }
     }
