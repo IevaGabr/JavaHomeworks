@@ -37,7 +37,7 @@ public class DatePeriod {
     }
 
     public boolean isOverlapping(DatePeriod datePeriod) {
-        return datePeriod.getStartDate().toEpochDay() <= this.endDate.toEpochDay();
+        return datePeriod.getStartDate().toEpochDay() <= this.endDate.toEpochDay() && datePeriod.getEndDate().toEpochDay() >= this.startDate.toEpochDay();
     }
 
     public DatePeriod intersection(DatePeriod datePeriod) {
