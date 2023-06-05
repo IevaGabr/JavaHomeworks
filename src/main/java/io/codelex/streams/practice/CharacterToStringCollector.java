@@ -1,35 +1,45 @@
 package io.codelex.streams.practice;
 
+import io.codelex.syntax.strings.StringMethods;
+
+import java.util.EnumSet;
 import java.util.Set;
+import java.util.StringJoiner;
 import java.util.function.BiConsumer;
 import java.util.function.BinaryOperator;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 public class CharacterToStringCollector implements Collector<Character, StringBuilder, String> {
     @Override
     public Supplier<StringBuilder> supplier() {
-        return null;
+
+        return StringBuilder::new;
     }
 
     @Override
     public BiConsumer<StringBuilder, Character> accumulator() {
-        return null;
+
+        return StringBuilder::append;
     }
 
     @Override
     public BinaryOperator<StringBuilder> combiner() {
-        return null;
+
+        return (StringBuilder::append);
     }
 
     @Override
     public Function<StringBuilder, String> finisher() {
-        return null;
+
+        return StringBuilder::toString;
     }
 
     @Override
     public Set<Characteristics> characteristics() {
-        return null;
+
+        return EnumSet.of(Characteristics.CONCURRENT);
     }
 }
