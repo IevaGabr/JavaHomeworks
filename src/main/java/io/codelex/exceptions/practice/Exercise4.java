@@ -1,6 +1,12 @@
 package io.codelex.exceptions.practice;
 
 public class Exercise4 {
+    public static class NonPositiveNumberException extends RuntimeException {
+        public NonPositiveNumberException(String errorMessage) {
+            super(errorMessage);
+        }
+    }
+
     public static void main(String[] args) {
         try {
             double d = getInput(args[0]);
@@ -11,16 +17,19 @@ public class Exercise4 {
             System.out.println("Be sure to enter a number.");
         } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("Enter number as first parameter.");
-        } /* todo -
-         catch (NonPositiveNumberException e) {
-        System.out.println("Result will be imaginary number.");
+        }  //todo -
+        catch (NonPositiveNumberException e) {
+            System.out.println("Result will be imaginary number.");
         }
-        */
+
     }
 
     static double getInput(String s) {
         double d = new Double(s).doubleValue();
         // Throw an NonPositiveNumberException if d is less than 0
+        if (d < 0) {
+            throw new NonPositiveNumberException("Number is less than 0");
+        }
         return d;
     }
 }
