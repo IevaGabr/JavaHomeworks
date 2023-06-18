@@ -3,11 +3,8 @@ package io.codelex.javaadvancedtest.exercise1;
 import java.math.BigDecimal;
 
 public class DebitCard extends Card {
-    private BigDecimal balance;
-
     public DebitCard(String number, String owner, String codeCCV) {
         super(number, owner, codeCCV);
-        this.balance = BigDecimal.ZERO;
     }
 
     @Override
@@ -22,9 +19,9 @@ public class DebitCard extends Card {
     public void takeMoney(BigDecimal amount) throws NotEnoughFundsException {
         if (this.balance.subtract(amount).compareTo(BigDecimal.ZERO) == -1) {
             throw new NotEnoughFundsException("Not enough funds!");
-        } else {
-            balance = this.balance.subtract(amount);
         }
+        balance = this.balance.subtract(amount);
+
     }
 
     @Override

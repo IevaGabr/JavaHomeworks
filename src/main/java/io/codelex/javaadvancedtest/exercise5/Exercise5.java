@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class Exercise5 {
     public static void main(String[] args) {
@@ -16,10 +17,10 @@ public class Exercise5 {
         System.out.println(evenPercent);
     }
 
-    public static <T> double partOf(List<T> list, Function<T, Boolean> function) {
+    public static <T> double partOf(List<T> list, Predicate<T> function) {
         List<T> secondList = new ArrayList<>();
         for (T l : list) {
-            if (function.apply(l)) {
+            if (function.test(l)) {
                 secondList.add(l);
             }
         }

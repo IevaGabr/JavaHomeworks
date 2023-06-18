@@ -6,11 +6,13 @@ public abstract class Card {
     private String number;
     private String owner;
     private String codeCCV;
+    protected BigDecimal balance;
 
     public Card(String number, String owner, String codeCCV) {
         this.number = number;
         this.owner = owner;
         this.codeCCV = codeCCV;
+        this.balance = BigDecimal.ZERO;
     }
 
     public abstract void addMoney(BigDecimal amount);
