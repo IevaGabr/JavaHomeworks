@@ -1,5 +1,10 @@
 package io.codelex.javaadvancedtest.exercise3;
 
+import java.util.Arrays;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+
 public class Joiner<T> {
     private String separator;
 
@@ -8,10 +13,6 @@ public class Joiner<T> {
     }
 
     public String join(T... item) {
-        String result = "";
-        for (T i : item) {
-            result = result + i.toString() + this.separator;
-        }
-        return result.substring(0, result.length() - this.separator.length());
+        return Stream.of(item).map(Object::toString).collect(Collectors.joining(this.separator));
     }
 }

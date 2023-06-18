@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 public class CardApp {
     public static void main(String[] args) throws NotEnoughFundsException {
         Card debit = new DebitCard("54129874159632114", "John Smith", "015");
-        Card credit = new CreditCard("54129879159662134", "Sara Smith", "117");
+        Card credit = new CreditCard("54129879159662134", "Sara Smith", "117", new BigDecimal("500.00"));
         /*debit.takeMoney(new BigDecimal("600.00"));
         credit.takeMoney(new BigDecimal("600.00"));*/
         debit.addMoney(new BigDecimal("15000.00"));

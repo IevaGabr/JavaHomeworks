@@ -3,12 +3,9 @@ package io.codelex.javaadvancedtest.exercise1;
 import java.math.BigDecimal;
 
 public class CreditCard extends Card {
-
-    private BigDecimal balance;
-
-    public CreditCard(String number, String owner, String codeCCV) {
+    public CreditCard(String number, String owner, String codeCCV, BigDecimal overdraft) {
         super(number, owner, codeCCV);
-        this.balance = new BigDecimal("500.00");
+        this.balance = overdraft;
     }
 
     @Override
@@ -20,12 +17,12 @@ public class CreditCard extends Card {
     public void takeMoney(BigDecimal amount) throws NotEnoughFundsException {
         if (this.balance.subtract(amount).compareTo(BigDecimal.ZERO) == -1) {
             throw new NotEnoughFundsException("Not enough funds!");
-        } else {
-            balance = this.balance.subtract(amount);
-            if (balance.compareTo(new BigDecimal("100.00")) <= 0) {
-                System.out.println("Warning: Low funds");
-            }
         }
+        balance = this.balance.subtract(amount);
+        if (balance.compareTo(new BigDecimal("100.00")) <= 0) {
+            System.out.println("Warning: Low funds");
+        }
+
     }
 
     @Override
