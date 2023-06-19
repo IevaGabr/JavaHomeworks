@@ -9,28 +9,41 @@ import java.net.URL;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static java.lang.System.exit;
+
 public class TriviaGameApp {
     static ObjectMapper mapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-    static int score = 0;
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         Set<String> numbers = new HashSet<>();
-        Map<String, String> factsAboutNumbers = mapper.readValue(new URL("http://numbersapi.com/" + getNumbersForFacts(0, numbers)), Map.class);
-        checkIfNumbersHasSomeFact(numbers, factsAboutNumbers);
-        while (factsAboutNumbers.size() != 10) {
-            System.out.println(factsAboutNumbers.size());
-            factsAboutNumbers.putAll(getMoreFacts(numbers, factsAboutNumbers));
+        Map<String, String> factsAboutNumbers = null;
+        try {
+            factsAboutNumbers = mapper.readValue(new URL("http://numbersapi.com/" + getNumbersForFacts(0, numbers)), Map.class);
+            checkIfNumbersHasSomeFact(numbers, factsAboutNumbers);
+        } catch (IOException e) {
+            System.out.println("Error!");
         }
-        System.out.println(factsAboutNumbers.size());
+
+        while (factsAboutNumbers.size() < 21) {
+            try {
+                factsAboutNumbers.putAll(getMoreFacts(numbers, factsAboutNumbers));
+            } catch (IOException e) {
+                System.out.println("Error! Close program!");
+                exit(0);
+            }
+        }
         playGame(factsAboutNumbers, numbers);
-        System.out.println("Your result: " + score + "/10!");
+
     }
 
     public static void playGame(Map<String, String> facts, Set<String> numbers) {
+        int score = 0;
+        int countQuestions = 0;
         Scanner input = new Scanner(System.in);
         numbers.clear();
         numbers = facts.keySet();
         for (String number : numbers) {
+            countQuestions++;
             System.out.println(StringUtils.capitalize(facts.get(number).replaceAll(number + " is ", "")));
             Set<String> answers = new HashSet<>();
             answers.add(number);
@@ -54,8 +67,12 @@ public class TriviaGameApp {
             String playerAnswer = input.nextLine();
             if (optionsForAnswer.get(playerAnswer.toUpperCase()).equals(number)) {
                 score++;
+            } else if (countQuestions == 20) {
+                System.out.println(StringUtils.capitalize(facts.get(number).replaceAll(number + " is ", "")));
+                System.out.println("Correct answer:" + number);
             }
         }
+        System.out.println("Your result: " + score + "/" + countQuestions + "!");
     }
 
     public static Map<String, String> checkIfNumbersHasSomeFact(Set<String> numbers, Map<String, String> factsAboutNumber) {
@@ -72,10 +89,9 @@ public class TriviaGameApp {
 
     public static String getNumbersForFacts(int size, Set<String> numbers) {
         Random randomNumber = new Random();
-        while (numbers.size() != 11 - size) {
+        while (numbers.size() < 21 - size) {
             numbers.add(Integer.toString(randomNumber.nextInt(1000)));
         }
-        System.out.println(numbers);
         return String.join(",", numbers);
 
     }
